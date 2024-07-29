@@ -11,8 +11,9 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, count = 0;
 	va_list args;
+	int printed_chars = 0;
+	int i = 0;
 
 	if (!format)
 		return (-1);
@@ -24,16 +25,32 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			count += handle_specifier(format, &i, args);
+			switch (format[i])
+			{
+				case 'c':
+					printed_chars += print_char(args);
+					break;
+				case 's':
+					printed_chars += print_string(args);
+					break;
+				case '%':
+					write(1, "%", 1);
+					printed_chars++;
+					break;
+				default:
+					write(1, &format[i], 1);
+					printed_chars++;
+					break;
+			}
 		}
 		else
 		{
-			_putchar(format[i]);
-			count++;
+			write(1, &format[i], 1);
+			printed_chars++;
 		}
 		i++;
 	}
 
 	va_end(args);
-	return (count);
+	return (printed_chars);
 }
