@@ -24,20 +24,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == 'c')
-				count += print_char(args);
-			else if (format[i] == 's')
-				count += print_string(args);
-			else if (format[i] == '%')
-				count += print_percent(args);
-			else if (format[i] == 'd' || format[i] == 'i')
-				count += print_int(args);
-			else
-			{
-				_putchar('%');
-				_putchar(format[i]);
-				count += 2;
-			}
+			count += handle_specifier(format, &i, args);
 		}
 		else
 		{
