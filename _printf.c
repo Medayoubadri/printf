@@ -24,6 +24,8 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
+			if (format[i] == '\0')
+				break;
 			if (format[i] == 'c')
 				count += print_char(args);
 			else if (format[i] == 's')
@@ -32,15 +34,13 @@ int _printf(const char *format, ...)
 				count += print_percent(args);
 			else
 			{
-				_putchar('%');
-				_putchar(format[i]);
-				count += 2;
+				count += _putchar('%');
+				count += _putchar(format[i]);
 			}
 		}
 		else
 		{
-			_putchar(format[i]);
-			count++;
+			count += _putchar(format[i]);
 		}
 		i++;
 	}
