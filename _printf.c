@@ -24,17 +24,22 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == 'c')
-				count += print_char(args);
-			else if (format[i] == 's')
-				count += print_string(args);
-			else if (format[i] == '%')
-				count += print_percent(args);
-			else
+			switch (format[i])
 			{
-				_putchar('%');
-				_putchar(format[i]);
-				count += 2;
+				case 'c':
+					count += print_char(args);
+					break;
+				case 's':
+					count += print_string(args);
+					break;
+				case '%':
+					count += print_percent();
+					break;
+				default:
+					_putchar('%');
+					_putchar(format[i]);
+					count += 2;
+					break;
 			}
 		}
 		else
@@ -48,3 +53,4 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
+

@@ -2,24 +2,23 @@
 
 /**
  * print_string - Prints a string
- * @args: The list of arguments
+ * @args: The argument list containing the string to print
  *
  * Return: The number of characters printed
  */
 int print_string(va_list args)
 {
 	char *str = va_arg(args, char *);
-	int count = 0;
+	int i = 0;
 
-	if (!str)
+	if (str == NULL)
 		str = "(null)";
 
-	while (*str)
+	while (str[i])
 	{
-		count += _putchar(*str);
-		str++;
+		_putchar(str[i]);
+		i++;
 	}
-
-	return (count);
+	return (i);
 }
 
