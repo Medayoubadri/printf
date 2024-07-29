@@ -2,7 +2,7 @@
 
 /**
  * print_string - Prints a string
- * @args: The argument list containing the string to print
+ * @args: The list of arguments
  *
  * Return: The number of characters printed
  */
@@ -16,9 +16,10 @@ int print_string(va_list args)
 
 	while (*str)
 	{
-		count+= _putchar(*str);
+		count += _putchar(*str);
 		str++;
 	}
+
 	return (count);
 }
 

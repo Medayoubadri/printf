@@ -2,15 +2,14 @@
 
 /**
  * print_char - Prints a character
- * @args: The argument list containing the character to print
+ * @args: The list of arguments
  *
- * Return: The number of characters printed (1)
+ * Return: The number of characters printed
  */
 int print_char(va_list args)
 {
 	char c = va_arg(args, int);
 
-	_putchar(c);
-	return (1);
+	return (_putchar(c));
 }
 
