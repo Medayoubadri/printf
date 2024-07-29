@@ -2,30 +2,40 @@
 
 /**
  * print_int - Prints an integer
- * @args: The list of arguments
+ * @args: The argument list containing the integer to print
  *
  * Return: The number of characters printed
  */
 int print_int(va_list args)
 {
-	int n = va_arg(args, int);
-	int num = n, count = 0, divisor = 1;
+	int num = va_arg(args, int);
+	int count = 0;
+	char buffer[50];
+	int i = 0;
 
-	if (n < 0)
+	if (num < 0)
 	{
 		_putchar('-');
 		count++;
 		num = -num;
 	}
 
-	while (num / divisor > 9)
-		divisor *= 10;
-
-	while (divisor != 0)
+	if (num == 0)
 	{
-		count += _putchar('0' + num / divisor);
-		num %= divisor;
-		divisor /= 10;
+		_putchar('0');
+		return (1);
+	}
+
+	while (num > 0)
+	{
+		buffer[i++] = (num % 10) + '0';
+		num /= 10;
+	}
+
+	for (i--; i >= 0; i--)
+	{
+		_putchar(buffer[i]);
+		count++;
 	}
 
 	return (count);

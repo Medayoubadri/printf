@@ -23,6 +23,10 @@ int handle_specifier(const char *format, int *i, va_list args)
 		case '%':
 			count += print_percent();
 			break;
+		case 'd':
+		case 'i':
+			count += print_int(args);
+			break;
 		default:
 			_putchar('%');
 			_putchar(format[*i]);
