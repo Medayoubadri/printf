@@ -13,8 +13,8 @@
 
 typedef struct convert_match
 {
-        char *id;
-        int (*f)(va_list);
+	char *id;
+	int (*f)(va_list);
 } convert_match;
 
 
