@@ -5,7 +5,7 @@
  * @format: Format string
  *
  * Return: Number of characters printed
- * by: @medayoubadri @PascalAmah 
+ * by: @medayoubadri @PascalAmah
  */
 int _printf(const char *format, ...)
 {
@@ -13,11 +13,8 @@ int _printf(const char *format, ...)
 	int i = 0, j, len = 0;
 
 	convert_match m[] = {
-		{"%c", print_char},
-		{"%s", print_string},
-		{"%%", print_percent},
-		{"%d", print_int},
-		{"%i", print_int},
+		{"%c", print_char}, {"%s", print_string}, {"%%", print_percent},
+		{"%d", print_int}, {"%i", print_int},
 		{NULL, NULL}
 	};
 
