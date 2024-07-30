@@ -31,7 +31,8 @@ Here:
 	{
 		for (j = 0; specifiers[j].specifier != NULL; j++)
 		{
-			if (specifiers[j].specifier[0] == format[i] && specifiers[j].specifier[1] == format[i + 1])
+			if (specifiers[j].specifier[0] == format[i] &&
+			specifiers[j].specifier[1] == format[i + 1])
 			{
 				len += specifiers[j].function(args);
 				i += 2;
