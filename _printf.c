@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 
         convert_match m[] = {
                 {"%c", print_char}, {"%s", print_string}, {"%%", print_percent},
-                {"%d", print_dec}, {"%i", print_int},
+                {"%d", print_int}, {"%i", print_int},
                 {NULL, NULL}
         };
 
