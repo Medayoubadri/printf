@@ -29,6 +29,7 @@ int print_hex(va_list args);
 int print_HEX(va_list args);
 int print_binary(va_list args);
 int print_special_string(va_list args);
+int print_pointer(va_list args);
 int _putchar(char c);
 
 #endif /* MAIN_H */
