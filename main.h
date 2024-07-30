@@ -11,18 +11,22 @@
  *
  */
 
-typedef struct convert_match
+typedef struct format_specifier
 {
-	char *id;
-	int (*f)(va_list);
-} convert_match;
+	char *specifier;
+	int (*function)(va_list);
+} format_specifier_t;
 
-
+/* Function prototypes */
 int _printf(const char *format, ...);
 int print_char(va_list args);
 int print_string(va_list args);
 int print_percent(va_list args);
 int print_int(va_list args);
+int print_unsigned(va_list args);
+int print_octal(va_list args);
+int print_hex(va_list args);
+int print_HEX(va_list args);
 int print_binary(va_list args);
 int _putchar(char c);
 

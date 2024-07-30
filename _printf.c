@@ -12,10 +12,11 @@ int _printf(const char *format, ...)
 	va_list args;
 	int i = 0, j, len = 0;
 
-	convert_match m[] = {
+	format_specifier_t specifiers[] = {
 		{"%c", print_char}, {"%s", print_string}, {"%%", print_percent},
 		{"%d", print_int}, {"%i", print_int}, {"%b", print_binary},
-		{NULL, NULL}
+		{"%u", print_unsigned}, {"%o", print_octal}, {"%x", print_hex},
+		{"%X", print_HEX}, {NULL, NULL}
 	};
 
 	va_start(args, format);
@@ -28,17 +29,14 @@ int _printf(const char *format, ...)
 Here:
 	while (format[i] != '\0')
 	{
-		j = 5;
-
-		while (j >= 0)
+		for (j = 0; specifiers[j].specifier != NULL; j++)
 		{
-			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
+			if (specifiers[j].specifier[0] == format[i] && specifiers[j].specifier[1] == format[i + 1])
 			{
-				len += m[j].f(args);
-				i = i + 2;
+				len += specifiers[j].function(args);
+				i += 2;
 				goto Here;
 			}
-			j--;
 		}
 		_putchar(format[i]);
 		len++;
@@ -48,4 +46,3 @@ Here:
 	va_end(args);
 	return (len);
 }
-
