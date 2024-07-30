@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 
 	convert_match m[] = {
 		{"%c", print_char}, {"%s", print_string}, {"%%", print_percent},
-		{"%d", print_int}, {"%i", print_int},
+		{"%d", print_int}, {"%i", print_int}, {"%b", print_binary},
 		{NULL, NULL}
 	};
 
@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 Here:
 	while (format[i] != '\0')
 	{
-		j = 4;
+		j = 5;
 
 		while (j >= 0)
 		{
