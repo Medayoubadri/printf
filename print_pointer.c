@@ -1,8 +1,7 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * print_pointer - Prints a pointer address
+ * print_pointer - Prints the value of a pointer in hexadecimal format
  * @args: List of arguments
  *
  * Return: Number of characters printed
@@ -10,9 +9,10 @@
 int print_pointer(va_list args)
 {
 	void *ptr = va_arg(args, void *);
-	unsigned long int address = (unsigned long int)ptr;
+	unsigned long int addr = (unsigned long int)ptr;
 	char buffer[17];
-	int i = 0, len = 0;
+	int i = 15, len = 0;
+	char *hex = "0123456789abcdef";
 
 	if (ptr == NULL)
 	{
@@ -20,29 +20,28 @@ int print_pointer(va_list args)
 	}
 
 	buffer[16] = '\0';
-	while (address > 0)
-	{
-		int digit = address % 16;
 
-		if (digit < 10)
-			buffer[15 - i] = '0' + digit;
-		else
-			buffer[15 - i] = 'a' + (digit - 10);
-		address /= 16;
-		i++;
+	while (addr > 0)
+	{
+		buffer[i--] = hex[addr % 16];
+		addr /= 16;
+	}
+
+	while (i >= 0)
+	{
+		buffer[i--] = '0';
 	}
 
 	_putchar('0');
 	_putchar('x');
 	len += 2;
 
-	while (i < 16)
+	for (i = 0; buffer[i] != '\0'; i++)
 	{
-		buffer[15 - i] = '0';
-		i++;
+		_putchar(buffer[i]);
+		len++;
 	}
 
-	len += _printf("%s", &buffer[16 - i]);
 	return (len);
 }
 
