@@ -13,10 +13,13 @@ int _printf(const char *format, ...)
 	int i = 0, j, len = 0;
 
 	format_specifier_t specifiers[] = {
-		{"%c", print_char}, {"%s", print_string}, {"%%", print_percent},
-		{"%d", print_int}, {"%i", print_int}, {"%b", print_binary},
-		{"%u", print_unsigned}, {"%o", print_octal}, {"%x", print_hex},
-		{"%X", print_HEX}, {NULL, NULL}
+		{"%c", print_char}, {"%s", print_string},
+		{"%%", print_percent}, {"%d", print_int},
+		{"%i", print_int}, {"%b", print_binary},
+		{"%u", print_unsigned}, {"%o", print_octal},
+		{"%x", print_hex}, {"%X", print_HEX},
+		{"%S", print_special_string},
+		{NULL, NULL}
 	};
 
 	va_start(args, format);
