@@ -19,6 +19,13 @@ int print_octal(va_list args)
 		return (1);
 	}
 
+	/* Handle the # flag by printing a leading 0 for octal numbers */
+	if (num > 0 && _flag == '#')
+	{
+		_putchar('0');
+		len++;
+	}
+
 	while (num > 0)
 	{
 		buffer[i--] = (num % 8) + '0';

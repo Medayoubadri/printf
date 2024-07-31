@@ -20,6 +20,14 @@ int print_hex(va_list args)
 		return (1);
 	}
 
+	/* Handle the # flag by printing 0x prefix for hex numbers */
+	if (num > 0 && _flag == '#')
+	{
+		_putchar('0');
+		_putchar('x');
+		len += 2;
+	}
+
 	while (num > 0)
 	{
 		buffer[i--] = hex[num % 16];

@@ -17,6 +17,9 @@ typedef struct format_specifier
 	int (*function)(va_list);
 } format_specifier_t;
 
+/* Global variable to hold the current flag */
+extern char _flag;
+
 /* Function prototypes */
 int _printf(const char *format, ...);
 int print_char(va_list args);
@@ -31,6 +34,7 @@ int print_binary(va_list args);
 int print_special_string(va_list args);
 int print_pointer(va_list args);
 int print_hex_recursive(unsigned long int n);
+int print_flags(va_list args, char flag);
 int _putchar(char c);
 
 #endif /* MAIN_H */
