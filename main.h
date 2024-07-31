@@ -5,12 +5,12 @@
 #include <unistd.h>
 
 /**
- * struct format - match the conversion specifiers for printf
- * @id: type char pointer of the specifier i.e (l, h) for (d, i, u, o, x, X)
- * @f: type pointer to function for the conversion specifier
+ * struct format_specifier - match the conversion specifiers for printf
+ * @specifier: type char pointer of the specifier
+ *             i.e (l, h) for (d, i, u, o, x, X)
+ * @function: type pointer to function for the conversion specifier
  *
  */
-
 typedef struct format_specifier
 {
 	char *specifier;
@@ -33,5 +33,10 @@ int print_pointer(va_list args);
 int print_hex_recursive(unsigned long int n);
 int _putchar(char c);
 int (*get_specifier_function(const char *format))(va_list);
+int process_flags(const char *format, va_list args, int (*f)(va_list));
+int handle_plus_flag(va_list args, char flag);
+int handle_hash_flag(const char *format, va_list args);
+int handle_specifier(const char *format, va_list args, int *len);
 
 #endif /* MAIN_H */
+

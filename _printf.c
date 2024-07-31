@@ -10,8 +10,7 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i = 0, len = 0;
-	int (*f)(va_list);
+	int i = 0, len = 0, skip;
 
 	va_start(args, format);
 
@@ -20,18 +19,13 @@ int _printf(const char *format, ...)
 		return (-1);
 	}
 
-Here:
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
-			f = get_specifier_function(&format[i]);
-			if (f != NULL)
-			{
-				len += f(args);
-				i += 2;
-				goto Here;
-			}
+			skip = handle_specifier(&format[i], args, &len);
+			i += skip;
+			continue;
 		}
 		_putchar(format[i]);
 		len++;
