@@ -1,7 +1,8 @@
 #include "main.h"
 
 /**
- * get_specifier_function - Matches the conversion specifier with the corresponding function
+ * get_specifier_function - Matches the conversion specifier
+ * with the corresponding function
  * @format: Format string
  *
  * Return: Pointer to the corresponding function or NULL if no match is found
