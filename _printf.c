@@ -10,17 +10,8 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i = 0, j, len = 0;
-
-	format_specifier_t specifiers[] = {
-		{"%c", print_char}, {"%s", print_string},
-		{"%%", print_percent}, {"%d", print_int},
-		{"%i", print_int}, {"%b", print_binary},
-		{"%u", print_unsigned}, {"%o", print_octal},
-		{"%x", print_hex}, {"%X", print_HEX},
-		{"%S", print_special_string}, {"%p", print_pointer},
-		{NULL, NULL}
-	};
+	int i = 0, len = 0;
+	int (*f)(va_list);
 
 	va_start(args, format);
 
@@ -32,12 +23,12 @@ int _printf(const char *format, ...)
 Here:
 	while (format[i] != '\0')
 	{
-		for (j = 0; specifiers[j].specifier != NULL; j++)
+		if (format[i] == '%')
 		{
-			if (specifiers[j].specifier[0] == format[i] &&
-			specifiers[j].specifier[1] == format[i + 1])
+			f = get_specifier_function(&format[i]);
+			if (f != NULL)
 			{
-				len += specifiers[j].function(args);
+				len += f(args);
 				i += 2;
 				goto Here;
 			}
@@ -50,3 +41,4 @@ Here:
 	va_end(args);
 	return (len);
 }
+

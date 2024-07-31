@@ -32,5 +32,6 @@ int print_special_string(va_list args);
 int print_pointer(va_list args);
 int print_hex_recursive(unsigned long int n);
 int _putchar(char c);
+int (*get_specifier_function(const char *format))(va_list);
 
 #endif /* MAIN_H */
