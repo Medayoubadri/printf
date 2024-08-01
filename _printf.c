@@ -24,10 +24,13 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			skip = handle_specifier(&format[i], args, &len);
-			if (skip > 0) {
+			if (skip > 0)
+			{
 				i += skip;
 				continue;
-			} else {
+			}
+			else
+			{
 				_putchar('%');
 				_putchar(format[i + 1]);
 				len += 2;
