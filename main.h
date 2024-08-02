@@ -38,6 +38,7 @@ int handle_plus_flag(va_list args, char flag);
 int handle_hash_flag(const char *format, va_list args);
 int handle_specifier(const char *format, va_list args, int *len);
 int print_reverse(va_list args);
+int print_rot13(va_list args);
 
 #endif /* MAIN_H */
 
